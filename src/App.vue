@@ -1,32 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+
+  <!-- BT:
+          v-app: Root component. This is where you can nested other component
+          v-content: This is where other components will be displaying in here.
+           -->
+  <v-app>
+
+    <v-content>
+      <!-- BT - This is where all of our web page go here -->
+      <router-view></router-view>
+    </v-content>
+
+  </v-app>
+
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  name: 'App',
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  components: {
+
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
