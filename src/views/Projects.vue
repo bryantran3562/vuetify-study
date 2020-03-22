@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>This is Home Pge</h1>
+  <div>
+    <h1>Projects</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 
 
 export default {
-  name: 'Home',
+
   components: {
 
   }
