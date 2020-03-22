@@ -5,14 +5,25 @@
       <v-container fluid class="my-5">
       <!-- BT - Button for sorting -->
       <v-layout row justify-start class="mb-3">
-        <v-btn small text color="grey lighten-1" @click="sortBy('title')">
-          <v-icon small left>mdi-folder</v-icon>
-          <span class="caption text-lowercase">By project name</span>
-        </v-btn>
-        <v-btn small text color="grey lighten-1" @click="sortBy('person')">
-          <v-icon small left>mdi-account</v-icon>
-          <span class="caption text-lowercase">By Person</span>
-        </v-btn>
+
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+          <v-btn v-on="on" small text class="grey lighten-4 grey--text" @click="sortBy('title')">
+            <v-icon small left>mdi-folder</v-icon>
+            <span class="caption text-lowercase">By project name</span>
+          </v-btn>
+          </template>
+          <span>Sort by project name</span>
+        </v-tooltip>
+
+        <v-tooltip top><template v-slot:activator="{ on }">
+          <v-btn v-on="on" small text class="grey lighten-4 grey--text" @click="sortBy('person')" slot="activator">
+            <v-icon small left>mdi-account</v-icon>
+            <span class="caption text-lowercase">By Person</span>
+          </v-btn>
+          </template>
+          <span>Sort by project author</span>
+        </v-tooltip>
       </v-layout>
 
 
