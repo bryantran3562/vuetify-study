@@ -13,9 +13,11 @@
       </v-card-title>
 
       <v-card-text>
-        <v-form class="px-3">
-          <v-text-field v-model="title" label="Title" prepend-icon="mdi-folder"></v-text-field>
-          <v-textarea v-model="content" label="Information" prepend-icon="mdi-pencil"></v-textarea>
+          <!-- BT - Notes: ref="form" - This will allow us to reference our form to know if the form is valid or not -->
+        <v-form class="px-3" ref="form">
+            <!-- BT - Notes: :rules="inputRules" validation the user input. This is just for the user sees it -->
+          <v-text-field v-model="title" label="Title" prepend-icon="mdi-folder" :rules="inputRules"></v-text-field>
+          <v-textarea v-model="content" label="Information" prepend-icon="mdi-pencil" :rules="inputRules"></v-textarea>
 
           <!-- BT Date Picker -->
           <v-menu v-model="menu" :close-on-content-click="false">
@@ -51,13 +53,23 @@ export default {
       title: '',
       content: '',
       due: null,
-      menu: false
+      menu: false,
+      //BT - Array contain our rule for checking the user input.
+      inputRules: [
+        v => !!v || 'This field is required',
+        v => v.length >= 3 || 'Minimum length is 3 characters'
+      ]
     }
   },
 
   methods: {
+    //BT - Form validation is only for user to see it. But the submit does not prevent the user to submit an invalid data. So, we
+    //     have to check with our submit button.
     submit() {
-      console.log(this.title, this.content)
+        //BT - Notes: $refs - This allow us to reference to our form.
+        if(this.$refs.form.validate()) {
+        console.log(this.title, this.content)
+      }
     }
   },
 
