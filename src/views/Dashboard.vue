@@ -3,6 +3,19 @@
     <h1 class="subtitle-1 grey--text">Dash Board</h1>
 
       <v-container fluid class="my-5">
+      <!-- BT - Button for sorting -->
+      <v-layout row justify-start class="mb-3">
+        <v-btn small text color="grey lighten-1" @click="sortBy('title')">
+          <v-icon small left>mdi-folder</v-icon>
+          <span class="caption text-lowercase">By project name</span>
+        </v-btn>
+        <v-btn small text color="grey lighten-1" @click="sortBy('person')">
+          <v-icon small left>mdi-account</v-icon>
+          <span class="caption text-lowercase">By Person</span>
+        </v-btn>
+      </v-layout>
+
+
         <v-card flat v-for="project in projects" :key="project.title">
           <!-- BT - Using syntax ES6 backticks to get the outcom. -->
           <v-layout row wrap :class="`pa-3 project ${project.status}`">
@@ -42,6 +55,12 @@ export default {
         { title: 'Design video thumbnails', person: 'Ryu', due: '20th Dec 2018', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
         { title: 'Create a community forum', person: 'Gouken', due: '20th Oct 2018', status: 'overdue', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
       ]
+    }
+  },
+
+  methods: {
+    sortBy(prop) {
+      this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
     }
   }
 }

@@ -9,7 +9,7 @@
             <span>Ninja</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text class="grey lightten-4">
+        <v-btn text class="grey lighten-3 grey--text">
             <span>Sign Out</span>
             <v-icon right>mdi-exit-to-app</v-icon>
         </v-btn>
