@@ -3,3 +3,5 @@
 Team.vue - with card.
 
 Project.vue - expansion panel
+
+NavBar.vue - Menu
