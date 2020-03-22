@@ -6,4 +6,4 @@ Project.vue - expansion panel
 
 NavBar.vue - Menu
 
-Popup.vue - popup
+Popup.vue - popup - Also, need to: npm install date-fns
