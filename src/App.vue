@@ -6,7 +6,12 @@
            -->
   <v-app class="grey lighten-4">
 
-    <v-content>
+    <!-- BT - Format:
+    m or p: margin or padding
+    x: x and y direction -There are a lot more for the direction too.
+    4: size
+     -->
+    <v-content class="mx-4 mb-4">
 
       <!-- BT - NavBar -->
       <Navbar />
