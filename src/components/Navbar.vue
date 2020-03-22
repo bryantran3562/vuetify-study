@@ -1,17 +1,23 @@
 <template>
   <nav>
 
-    <v-toolbar flat app>
-      <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Todo</span>
-        <span>Ninja</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn flat class="grey lightten-4">
-        <span>Sign Out</span>
-        <v-icon right>mdi-exit-to-app</v-icon>
-      </v-btn>
-    </v-toolbar>
+    <v-app-bar text app>
+
+        <v-app-bar-nav-icon @click="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
+        <v-toolbar-title class="text-uppercase grey--text">
+            <span class="font-weight-light">Todo</span>
+            <span>Ninja</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn text class="grey lightten-4">
+            <span>Sign Out</span>
+            <v-icon right>mdi-exit-to-app</v-icon>
+        </v-btn>
+    </v-app-bar>
+
+    <v-navigation-drawer app v-model="drawer" class="indigo">
+      <p>test</p>
+    </v-navigation-drawer>
 
   </nav>
 </template>
@@ -20,6 +26,7 @@
 export default {
   data() {
     return {
+        drawer: false,
     }
   }
 }
