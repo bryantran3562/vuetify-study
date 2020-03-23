@@ -2,6 +2,11 @@
   <nav>
 
     <v-app-bar text app>
+      <!-- BT - This snackbar is like a message to the user -->
+      <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
+      <span>Awesome! You added a new project.</span>
+      <v-btn color="white" text @click="snackbar = false">Close</v-btn>
+    </v-snackbar>
 
         <v-app-bar-nav-icon @click="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
         <v-toolbar-title class="text-uppercase grey--text">
@@ -41,9 +46,11 @@
         </v-flex>
 
         <!-- BT - Popup -->
-        
+
         <v-flex class="mt-4 mb-3">
-          <Popup/>
+          <!-- BT - Listening to an emit event from Popup.vue for displaying messge to user to
+                    tell them that - they have successed added a project. -->
+          <Popup @projectAdded="snackbar = true"/>
         </v-flex>
 
       </v-layout>
@@ -77,7 +84,8 @@ export default {
             { icon: 'mdi-monitor-dashboard', text: 'Dashboard', route: '/' },
             { icon: 'mdi-folder', text: 'My Projects', route: '/projects' },
             { icon: 'mdi-account', text: 'Team', route: '/team' },
-        ]
+        ],
+        snackbar: false,
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
 
-  <v-dialog max-width="600px">
+<!-- BT - The v-model="dialog" will set to false to make the dialog disappered. -->
+  <v-dialog max-width="600px" v-model="dialog">
 
       <!-- BT - Popup Dialog  -->
     <template v-slot:activator="{ on }">
@@ -30,8 +31,8 @@
           </v-menu>
 
           <v-spacer></v-spacer>
-
-          <v-btn text @click="submit" class="success mx-0 mt-3">Add Project</v-btn>
+        <!-- BT - :loading will make you see a cirle around on the button to say it is busy and stil working on it -->
+          <v-btn text @click="submit" class="success mx-0 mt-3" :loading="loading">Add Project</v-btn>
         </v-form>
       </v-card-text>
 
@@ -58,8 +59,13 @@ export default {
       inputRules: [
         v => !!v || 'This field is required',
         v => v.length >= 3 || 'Minimum length is 3 characters'
-      ]
+      ],
+          //BT - This is for dialog disappear when done.
+      dialog: false,
+    //BT - This is for our circle loading icon in the add project button.
+      loading: false,
     }
+
   },
 
   methods: {
@@ -69,6 +75,15 @@ export default {
         //BT - Notes: $refs - This allow us to reference to our form.
         if(this.$refs.form.validate()) {
         console.log(this.title, this.content)
+
+        //BT - These are just troubleshooting. These setting should set when you are sending your data over the network and the call 
+        //     will asyn in which it will return a promise to tell you it is completed the call then you place these thing in it.
+        //     For now, you will not see it loading the circle because it sets to fail.
+        this.loading = true;
+        this.dialog = false;
+        //BT - So when the user is clicking the 'Add project' button. We want to have a snackbar or little message to tell them that
+        //     it was added. The message will be displaying is in the Navbar.vue. How do we send a message to it? $emit function.
+        this.$emit('projectAdded')
       }
     }
   },
